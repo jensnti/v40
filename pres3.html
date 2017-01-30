@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="sv">
+    <head> 
+        <title>Kreativitet!</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="pres.css">
+    </head>
+<body>
+<main>
+    <h1>Vecka 40</h1>
+    <h2 onclick="showHide('node');">Node</h2>
+    <div id="node" hidden>
+    <p>install Node</p>
+    <p>https://nodejs.org/en/
+
+    tillgång till npm
+
+    Hello world 
+    </p>
+    <pre>
+    const http = require('http');
+
+    const hostname = '127.0.0.1';
+    const port = 3000;
+
+    const server = http.createServer((req, res) => {
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'text/plain');
+      res.end('Hello World\n');
+    });
+
+    server.listen(port, hostname, () => {
+      console.log(`Server running at http://${hostname}:${port}/`);
+    });
+    </pre>
+    <p>Hur fungerar det då?
+
+    Lyssnar på connections, när det händer så körs ett callback.
+    Gör att vi kan hantera många uppkopplingar samtidigt.
+    Event loopen snurrar på och gör klart sina arbeten, men medans detta sker hanteras callbacks och events.
+    </p>
+    </div>
+    <h2 onclick="showHide('express');">Express</h2>
+    <div id="express" hidden>
+    <p>Express
+web application framework, ramverk
+liten flexibel
+routes osv.
+
+npm install express
+https://www.npmjs.com/package/express
+
+i katalogen där vi nu installerat express kan vi skapa en js fil för att köra med node
+</p>
+<pre>
+    var express = require('express'); // kräver att express finns tillgängligt, return function
+    var app = express(); // kör den skapar en instans av applikationen och ger oss tillgång till alla metoder
+
+    // anv. get metoden på vald url, callback function med req resp objekt
+    // resp server response
+    app.get('/', function(request, response) {
+       response.send('Hello world'); 
+    });
+
+    // app post get put delete REST, Representational State Transfer
+
+    app.listen(3000); // starta server lyssna på port 3000
+    // vi kan alltid ange en callback function som körs
+</pre>
+
+<p>anv. node https://github.com/expressjs/express
+
+http://expressjs.com/en/4x/api.html
+
+anv. för att servera statiska filer
+</p><pre>
+    app.get('/', function(request, response) {
+       response.sendFile(__dirname + '/index.html');
+    });
+</pre>
+<p>anv. request för att ta emot parameter från get/post osv.
+</p><pre>
+    app.get('/:id', function(request, response) {
+        response.send('Du angav ' + request.params.id);
+    });
+</pre>
+    </div>
+    <h2 onclick="showHide('websocket');">Websockets</h2>
+    <div id="websocket" hidden>
+    <p>Websockets
+möjlighet till kommunikation mellan webbläsare via TCP
+socket.io
+implementation av websockets för node
+
+http://socket.io/get-started/
+npm install express
+npm install socket.io
+
+Steg 1</p>
+<pre>
+    var http = require('http').Server(app); // vi skickar http server objektet till socket
+    var io = require('socket.io')(http); // sedan säger vi åt socket.io att lyssna på servern
+
+    // lyssnar på events som händer
+    // sedan hantera det och svara som vi vill
+    io.on('connection', function(socket){
+      console.log('a user connected');
+      socket.on('disconnect', function(){
+        console.log('user disconnected');
+      });
+    });
+</pre>
+<p>
+// vår html behöver komma åt socket.io javascript
+    <!--<script src="/socket.io/socket.io.js"></script>
+    <script>
+        // skapar nytt objekt atta använda
+        var socket = io();
+-->
+// anv. socket emit för att skickat meddelande till alla som är uppkopplade
+// i sin tur anv. vi värdet från ett formulär och skickar det vidare
+</p>
+    </div>
+    <h2 onclick="showHide('jquery');">JQuery</h2>
+    <div id="jquery" hidden>
+    <p>
+    <!-- <script src="http://code.jquery.com/jquery-1.11.1.js"></script> -->
+JQUERY
+
+https://jquery.org/
+
+http://vanilla-js.com/
+
+Vi anv. jquery här för att enkelt skapa nya element och lägga till dem i koden
+</p>
+<pre>
+    $('form').submit(function(){
+        socket.emit('chat message', $('#m').val());
+        $('#m').val('');
+        return false;
+    });
+    socket.on('chat message', function (msg) {
+        $('#messages').append($('&lt;li&gt;').text(msg));
+    });
+</pre>
+    </div>
+    <h2 onclick="showHide('geo');">Geo location</h2>
+    <div id="geo" hidden>
+    <p>https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation</p>
+<p>
+Geolocation api låter användaren bestämma om web appar ska få tillgång till deras locatioin via gps.<br>
+Detta finns då tillgängligt i navigator.geolocation objektet.
+<br>
+getCurrentPosition() metoden hämtar position i koordinater, latitude longitude
+</p>
+<pre>
+    function getLocation() {
+        'use strict';
+        var navigator = '';
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                console.log("Latitude: " + position.coords.latitude +
+                        " Longitude: " + position.coords.longitude);
+            });
+        } else {
+            console.log("Geolocation is not supported by this browser.");
+        }
+    }
+</pre>
+    </div>
+    <h2 onclick="showHide('userMedia');">User media</h2>
+    <div id="userMedia" hidden>
+    <p>https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
+<br>
+Komma åt webcamera/camera/microfon på webbläsaren</p>
+    <pre>
+    if (navigator.mediaDevices &mp;&amp; navigator.mediaDevices.getUserMedia) {
+        // kan anv. `{ audio: true }` för ljud
+        navigator.mediaDevices.getUserMedia({ video: true }).then(function (stream) {
+            video.src = window.URL.createObjectURL(stream); // vi sätter src för videoelementet till kamerans stream
+            video.play(); // spela
+        });
+    }</pre>
+    <p><a href="cam.html" target="_blank" title="camjs">cam demo</a></p>
+    </div>
+</main>
+<script src="pres.js"></script>
+</body>
+</html>

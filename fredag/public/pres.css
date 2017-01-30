@@ -1,0 +1,24 @@
+html { font-size: 16px; }
+body { font-family: "Segoe UI", sans-serif; 
+		font-weight: 400; color: #555555; 
+		font-size: 62.5%; }
+
+h1 { font-size: 5em; text-align: center; }
+h2 { font-size: 4em; border-bottom: 1px solid grey; }
+h3 { font-size: 3em; }
+p { font-size: 2em; color: #000000; margin: 5px 0px 0px 20px; }
+main { 
+	width: 80%; 
+	margin: 0 auto 100px; 
+}
+pre { font-size: 2em; }
+.test { color: pink; }
+
+@media only screen and (max-width: 640px) {
+    /* css rules for breakpoints */
+    main {
+    	width: 100%;
+    	margin: 0px;
+    	background-color: lightblue;
+    }
+}

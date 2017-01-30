@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="sv">
+    <head> 
+        <title>Fredag</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="pres.css">
+    </head>
+<body>
+<main>
+    <h1>Vecka 40</h1>
+    <h2 onclick="showHide('igen');">Jag försöker igen</h2>
+    <div id="igen">
+    <p>Geolocation</p>
+    <pre>
+        function getLocation() {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                console.log("Latitude: " + position.coords.latitude +
+                        " Longitude: " + position.coords.longitude);
+            });
+        }
+    </pre>
+    <p><a href="cam">Cam!</a></p>
+    </div>
+    <h2 onclick="showHide('canvas');">Canvas</h2>
+    <div id="canvas">
+    <p>html5 element</p>
+    <pre>
+        &lt;canvas id="canvas" width="450" height="450"&gt;Fallback, sad browser&lt/canvas&gt;
+    </pre>
+    <p>För att arbeta med det så behöver vi välja elementet och dess context. 2d</p>
+    <pre>
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+    </pre>
+    <p>För att rita på canvas så använder vi funktioner, ex rita ut en kub.</p>
+    <pre>
+        ctx.fillStyle = color;
+        ctx.fillRect(x ,y ,sizeX ,sizeY);
+    </pre>
+    </div>
+    <h2 onclick="showHide('anim');">Animera</h2>
+    <div id="anim">
+    <p>För att animera canvas, så ritar vi om det.</p>
+    <p>Olika sätt att göra detta på, setInterval och requestAnimationFrame</p>
+    <pre>
+        setInterval(dosomething, milliseconds);
+    </pre>
+    <pre>
+        function draw () {
+            // dostuff
+            requestAnimationFrame(draw);
+        }
+        requestAnimationFrame(draw);
+    </pre>
+    <p>Så vi kan kalla på en rita funktion och uppdatera koordinaterna på vår kub osv.</p>
+    <p>Vi behöver dock "rensa" vårt canvas hela tiden.</p>
+    <pre>
+        ctx.clearRect(x, y, canvasSizeX, CanvasSizeY);
+    </pre>
+    </div>    
+    <h2 onclick="showHide('ael');">addEventListener</h2>
+    <div id="ael">
+    <p><a href="v40pdf.zip">PDF filer serverade med node!</a>
+    <p>Canvas och keyboard events</p>
+    <pre>
+        document.addEventListener("keydown", function (event) {
+            if (event.defaultPrevented) {
+                return;
+            }
+            console.log(event.key);
+                event.preventDefault();
+        }, true);
+    </pre>
+    </div>
+    <h2 onclick="showHide('slut');">Tillsammans</h2>
+    <div id="slut">
+        <p><a href="/">Spela spelet</a></p>
+    </div>    
+</main>
+<script src="pres.js"></script>
+</body>
+</html>

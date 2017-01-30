@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>Webcam example</title>
+        <meta charset="utf-8">
+    </head>
+<body>
+    <video id="video" width="640" height="480" autoplay>Video element for webcam</video>
+    <button id="snap">Snap Photo</button>
+    <canvas id="canvas" width="640" height="480">Canvas element for display snapshot</canvas>
+
+    <script>
+    var video = document.getElementById('video');
+
+    // För att komma åt camera så använder vi navigator, webbläsare och sedan mediaDevices
+    // där har vi då getUserMedia som kommer åt kamera och även ljud genom webbläsaren
+    // anv. måste såklart godkänna detta
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        // kan anv. `{ audio: true }` för ljud
+        navigator.mediaDevices.getUserMedia({ video: true }).then(function (stream) {
+            video.src = window.URL.createObjectURL(stream); // vi sätter src för videoelementet till kamerans stream
+            video.play(); // spela
+        });
+    }
+
+    // hämtar canvas elementet och sätter dess context till 2d
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var video = document.getElementById('video');
+
+    // Trigger photo take
+    document.getElementById("snap").addEventListener("click", function () {
+        context.drawImage(video, 0, 0, 640, 480);
+    });
+    </script>
+</body>
+</html>

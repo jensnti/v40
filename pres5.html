@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="sv">
+    <head> 
+        <title>Fredag</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="pres.css">
+    </head>
+<body>
+<main>
+    <h1>Vecka 40</h1>
+    <h2 onclick="showHide('canvas');">Canvas</h2>
+    <div id="canvas">
+    <p>html5 element</p>
+    <pre>
+        &lt;canvas id="canvas" width="450" height="450"&gt;Fallback, sad browser&lt/canvas&gt;
+    </pre>
+    <p>För att arbeta med det så behöver vi välja elementet och dess context. 2d</p>
+    <pre>
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+    </pre>
+    <p>För att rita på canvas så använder vi funktioner, ex rita ut en kub.</p>
+    <pre>
+        ctx.fillStyle = color;
+        ctx.fillRect(x ,y ,sizeX ,sizeY);
+    </pre>
+    </div>
+    <h2 onclick="showHide('ael');">addEventListener</h2>
+    <div id="ael">
+    <p><a href="v40pdf.zip">PDF filer serverade med node!</a>
+    </div>
+</main>
+<script src="pres.js"></script>
+</body>
+</html>

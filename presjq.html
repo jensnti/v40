@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="sv">
+    <head> 
+        <title>Introduktion, html, css</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="pres.css">
+        <style>
+
+            @media screen and (max-width: 320px) {
+                /* css rules for breakpoints */
+                h1 {
+                    color: green;
+                }
+            }
+        </style>
+    </head>
+<body>
+<main>
+    <h1>Vecka 40</h1>
+    <h2 onclick="showHide('ja');">Vem och vad?</h2>
+    <div id="ja">
+        <h3>Jens Andreasson</h3>
+        <p>Jobb, NTI distans 3.5 år</p>
+        <p>Webbserverprogrammering</p>
+        <p>Programmering</p>
+        <p>Webbutveckling</p>
+        
+        <h3>Varför är jag här?</h3>
+        <p>Webbutveckling</p>
+        <p>HTML</p>
+        <p>CSS</p>
+        <p>Javascript</p>
+
+        <h3>Mål med veckan</h3>
+        <p>Introduktion - historia</p>
+        <p>Tekniker</p>
+        <p>Skapa något!</p>
+    </div>
+    <h2 onclick="showHide('html');">HTML - Historia</h2>
+    <div id="html">
+        <h3>Hypertext markup language</h3>
+        <p>1980 Tim Berners-Lee @CERN</p>
+        <p>1989 Information Management: A proposal</p>
+        <p>Arpanet, protokoll, TCP-IP URL HTML == WWW</p>
+        <p>1990 Browser server</p>
+        <p>1991 Första publika html specen, 18 tags/element, idag har vi ~120 element</p>
+        <p>1997 html 4, strict, transitional</p>
+        <p>~2000 XHTML</p> 
+        <p>2004 html5 -> överge xhtml</p>
+        <p>2014 W3C HTML5 "klart"</p>
+    </div>
+    <h2 onclick="showHide('www');">WWW idag</h2>
+    <div id="www">
+        <p>server - tekniker, php, node, ruby, python, asp...</p>
+        <p>browser - mozilla, chrome, edge, opera osv.</p>
+        <p>motorer i webbläsare, gecko, blink, webkit</p>
+        <p>devices - internet/WWW finns i allt möjligt</p>
+        <p>Otroligt viktigt med standard och att följa riktlinjer</p>
+        <p><a href="https://validator.nu/" title="link validator.nu" target="_blank">validator.nu</a></p>
+        <p>w3c - world wide web consortium</p>
+        <p>Jakob Nielsen, usabillity, användbarhet</p>
+        <p><a href="http://caniuse.com/" title="link caniuse" target="_blank">Caniuse.com</a></p>
+    </div>
+    <h2 onclick="showHide('html2')">HTML - språket</h2>
+    <div id="html2">
+        <p>Märkspråk för att märka upp text</p>
+        <p>browser -> parse</p>
+        <p><a href="img/dom.wiki.png" title="dom" target="_blank">DOM - Document object model</a></p>
+        <p>HTML mönster, element</p>
+        <pre>
+            &lt;tag attribut&gt;value&lt;/tag&gt;
+            &lt;h1&gt;Detta är en rubrik&lt;/h1&gt;
+            &lt;nti&gt;Detta är en tag som inte finns&lt;/nti&gt;</pre>
+        <p><nti>Här använder jag nti taggen, den renderar fortfarande</nti></p>
+        <p>Designtanke bakom detta. Vi kan alltid lägga till element och det kommer fortfarande visas på gamla läsare.</p>
+        <p>Vi kan använda det som fallback. Innehållet i taggar som inte stöds visas alltid.</p>
+        <pre>
+            &lt;canvas&gt;Your browser does not support the HTML5 canvas tag.&lt;/canvas&gt;</pre>
+        <p>Gör språket robust, det har funnits i över 20 år på samma spec</p>
+        <p>HTML5, semantiska taggar</p>
+        <pre>
+            &lt;main&gt; för det huvudsakliga innehållet på en sida</pre>
+        <pre>
+            &lt;section&gt; del av dokumentet</pre>
+        <pre>
+            &lt;article&gt; fristående innehåll</pre>
+        <pre>
+            &lt;header&gt; rubrik sidhuvud för ett dokument, en artikel</pre>
+        <pre>
+            &lt;footer&gt; sidfot</pre>
+        <pre>
+            &lt;nav&gt; navigation</pre>
+        <p><a href="http://www.w3schools.com/html/html5_new_elements.asp" title="html elements on W3C" target="_blank">HTML elements on W3C</a></p>
+    </div>
+    <h2 onclick="showHide('css')">CSS</h2>
+    <div id="css">
+        <h3>Cascading Style Sheets</h3>
+        <p>1996 - första release</p>
+        <p>Html för att märka upp text, css för att märka upp html</p>
+        <p>Design och layout</p>
+        <p>Standard är väldigt viktigt, olika webbläsarmotorer</p>
+        <p><a href="img/css.gif" title="css" target="_blank">Illustrerad guide över css-utveckling</a></p>
+        <p>css mönster</p>
+        <pre>
+            selector {
+                property: value;
+            }</pre>
+        <p>Selectors - element, id, class</p>
+        <p>Varför är de så viktiga? Javascript</p>
+        <p>Även detta robust då nya attribut kan skapas. Kan inte webbläsaren använda dem så hoppas de över och sidan fortsätter renderas.</p>
+        <p>Mobile devices, media queries</p>
+    </div>
+    <h2 onclick="showHide('htmlCss')">HTML &amp; CSS</h2>
+    <div id="htmlCss">
+        <p>Lägga till CSS i dokument, inline, head, link</p>
+        <pre>
+        &lt;h1 style="color:blue;"&gt;
+        &lt;head&gt;
+        &lt;style&gt;
+            body { padding: 200px; } 
+        &lt;head&gt;
+            &lt;link rel="stylesheet" href="styles.css"&gt;</pre>
+        <p>Selectors igen</p>
+        <p>element</p>
+        <pre>
+            h1 { color: red; }</pre>
+        <p>class</p>
+        <pre>
+            .myClass { border: 1px solid black; }</pre>
+        <p>id</p>
+        <pre>
+            #myId { margin: 0px auto; }</pre>
+        <p>cascade order, prioriteringsorder för css regler</p>
+        <p>-&gt;external, head, inline, !important</p>
+        <p>Dokumentets ordning, float osv.</p>
+        <p>Mobile first, a list apart 2011</p>
+        <p>Adaptive design, responsive design</p>
+        <pre>
+            @media screen and (max-width: 320px) {
+                /* css rules for breakpoints */
+            }</pre>
+        <p>HTML templater, modernizr</p>
+        <p>Ramverk, Bootstrap, Foundation osv.</p>
+
+        <p><a href="http://www.w3schools.com/css/default.asp" title="css on W3C" target="_blank">CSS on W3C</a></p>
+        <p><a href="http://www.csszengarden.com/" title="link to csszen" target="_blank">css zen garden</a></p>
+    </div>
+</main>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script>
+$(window).load( function() {
+    $('div').each(function() {
+        $(this).hide();
+    });
+});
+</script>
+</body>
+</html>

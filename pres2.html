@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="sv">
+    <head> 
+        <title>Javascript</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="pres.css">
+    </head>
+<body>
+<main>
+    <h1>Vecka 40</h1>
+    <h2 onclick="showHide('jsHistoria');">Javascript - historia</h2>
+    <div id="jsHistoria">
+        <h3>javascript != java</h3>
+        <p>1995 Brendan Eich får i uppdrag av Netscape att skapa ett språk för webben</p>
+        <p>Första prototypen skrevs på 10 dagar</p>
+        <p>Får såsmåningom namnet javascript för att förvirra så många som möjligt</p>
+        <p>ECMAscript</p>
+        <p>1997 Standardiserat som ECMAscript</p>
+        <p>2006 JQuery</p>
+        <p>2008 Douglas Crockford, Javascript the good parts, jslint</p>
+        <p>2009 Node.js</p>
+        <p>201* Enormt många användaren</p>
+        <p>Ramverk, ramverk, ramverk, ramverk och ramverk</p>
+        <p>
+    </div>
+    <h2 onclick="showHide('vad');">Javascript?</h2>
+    <div id="vad">
+        <h3>Så vad ska man ha det till?</h3>
+        <p>W3Schools skriver:        </p>
+        <ol>
+            <li>HTML to define the content of web pages</li>
+            <li>CSS to specify the layout of web pages</li>
+            <li>JavaScript to program the behavior of web pages</li>
+        </ol>
+        <p>Förbättra användarupplevelsen</p>
+        <p>Dynamiskt innehåll, AJAX</p>
+        <p>Spel, canvas osv.</p>
+        <p>"With great power comes great responsibility." - Spider man 1962 eller Voltaire?</p>
+        <p>Webbriktlinjer!</p>
+    </div>
+    <h2 onclick="showHide('js');">Javascript - språket</h2>
+    <div id="js">
+        <p>High level språk, abstrakt vi människor kan läsa syntax</p>
+        <p>Dynamiskt typat</p>
+        <pre>
+            var x;</pre>
+        <p>Syntax mycket likt C familjen av språk</p>
+        <p>Körs i webbläsaren (och på server med en webbläsarmotor)</p>
+        <p>Event loop, callbacks, events</p>
+        <p>Säkerhet</p>
+    </div>
+    <h2 onclick="showHide('verktyg');">Utvecklingsverktyg</h2>
+    <div id="verktyg">
+        <h3>I webbläsaren</h3>
+        <p>Chrome, firefox developer tools</p>
+        <p>Finns i webbläsaren, låter dig köra javascript direkt</p>
+        <p>Felsökning, debugging, console.log, alert</p>
+    </div>
+    <h2 onclick="showHide('start');">Javascript - komma igång</h2>
+    <div id="start">
+        <h3>DOM interfaces</h3>
+        <p>Viktigt att förstå DOM och hur det fungerar</p>
+        <p>parentNode, children</p>
+        <p>navigator, document, element</p>
+        <p>events och addEventListener</p>
+        <p>Typ av event och function som ska köras, parametrar, this</p>
+        <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model" title="mozdev DOM api">Mozdev DOM api</a></p>
+    </div>
+</main>
+<script src="pres.js"></script>
+<script>
+    var div = document.getElementsByTagName("div");
+    console.log(div);
+    div[3].setAttribute("style", "color:red;");
+
+    window.onload = function () {
+        // kod
+    };
+
+</script>
+</body>
+</html>

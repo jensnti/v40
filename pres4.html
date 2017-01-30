@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="sv">
+    <head> 
+        <title>Sass</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="pres.css">
+    </head>
+<body>
+<main>
+    <h1>Vecka 40</h1>
+    <h2 onclick="showHide('sass');">Sass</h2>
+    <div id="sass" hidden>
+    <pre>
+    Sass använder Ruby
+    Installera ruby http://rubyinstaller.org/
+    gem install sass
+    sass -v
+
+    sass input.scss output.css
+
+    SCSS syntax
+
+    variabler $varName
+
+    selector {
+        property: $varName;
+    }
+
+    Partials & import
+
+    @import 'filnamn';
+
+    Mixins - små bitar för att göra livet enklare, tänk funktioner (finns också)
+
+    @mixin border-radius($radius) {
+      -webkit-border-radius: $radius;
+         -moz-border-radius: $radius;
+          -ms-border-radius: $radius;
+              border-radius: $radius;
+    }
+
+    .box { @include border-radius(10px); }
+
+    Operators, standard math 
+    width: 300px / 960px * 100%;
+
+    if else if 
+
+    $scheme : dark;
+
+    header {
+        @if $scheme == dark {
+            // do stuff, propteries to set 
+        }
+    }
+
+    Loops, while for each
+
+    $people: jens, jens, jens;
+
+    @each $person in $people {
+        .person-#{$people} {
+            background: url(person-#{$people}.jpg);
+        }
+    }
+
+    Nesting och media queries
+
+    .sideBar {
+        border: 1px solid grey;
+        @media (min--width: 700px) {
+            float: right;
+            width: 30%;
+        }
+    }
+
+    </pre>
+    </div>
+</main>
+<script src="pres.js"></script>
+</body>
+</html>
