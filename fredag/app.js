@@ -23,14 +23,11 @@ app.get('/cam', function (req, res) {
 var players = [];
 
 function updateRats(pUpd) {
-//    ctx.clearRect(0, 0, 450, 450); // rensa
-    // uppdatera värden för spelaren som rörde på sig
-    // rita om alla spelare
-    for(var i = 0; i < players.length; i++) {
-        if (players[i].id == pUpd.id) {
-            players[i].x = pUpd.x;
-            players[i].y = pUpd.y;
-        }
+    for (var player in players) {
+      if (players[player].id == pUpd.id) {
+        players[player].x = pUpd.x;
+        players[player].y = pUpd.y;
+      }
     }
 }
 

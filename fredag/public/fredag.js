@@ -3,11 +3,11 @@ var socket = io();
 
 // skapar ett spelarobjekt
 var player  = {
-    id: Math.floor(Math.random()*1000),
-    color: '#'+(Math.random()*0xFFFFFF<<0).toString(16),
+    id: Math.floor(Math.random() * 1000),
+    color: "#" + (Math.random() * 0xFFFFFF << 0).toString(16),
     x: Math.floor(Math.random() * 100),
     y: Math.floor(Math.random() * 100),
-    size: Math.floor(Math.random()*20)
+    size: 10
 };
 
 // för att hålla reda på alla spelare
@@ -34,14 +34,14 @@ var ctx = canvas.getContext('2d');
 // drawRat, tar x y och color för en spelare och ritar upp
 function drawRat(x, y, c, s) {
     ctx.fillStyle = c;
-    ctx.fillRect(x ,y ,s ,s);
+    ctx.fillRect(x, y, s, s);
 }
 
 function update() {
-  for (var player in players) {
-    drawRat(players[player].x, players[player].y, players[player].color, players[player].size);
-  }
-  requestAnimationFrame(update);
+    for (var player in players) {
+        drawRat(players[player].x, players[player].y, players[player].color, players[player].size);
+    }
+    requestAnimationFrame(update);
 }
 // updateRats, kallas av socket emit på userMv
 // för att uppdatera alla spelare
