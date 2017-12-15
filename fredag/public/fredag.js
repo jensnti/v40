@@ -17,10 +17,9 @@ var players = [];
 
 // när vi connectar skickar vi vår player
 socket.emit('pConnect', player);
-
 // ta emot player objekt från andra spelare och lägg till i players
 socket.on('pConnect', function (p) {
-    players.push(p);
+    players = p;
 });
 
 // msg att någon kopplade upp sig
@@ -38,22 +37,14 @@ function drawRat(x, y, c, s) {
     ctx.fillRect(x ,y ,s ,s);
 }
 
+function update() {
+  for (var player in players) {
+    drawRat(players[player].x, players[player].y, players[player].color, players[player].size);
+  }
+  requestAnimationFrame(update);
+}
 // updateRats, kallas av socket emit på userMv
 // för att uppdatera alla spelare
-function updateRats(pUpd) {
-//    ctx.clearRect(0, 0, 450, 450); // rensa
-    // uppdatera värden för spelaren som rörde på sig
-    // rita om alla spelare
-    for(var i = 0; i < players.length; i++) {
-        if (players[i].id == pUpd.id) {
-            players[i].x = pUpd.x;
-            players[i].y = pUpd.y;
-            drawRat(players[i].x, players[i].y, players[i].color, players[i].size);
-        } else {
-            drawRat(players[i].x, players[i].y, players[i].color, players[i].size);
-        }
-    }
-}
 
 // bind keydown för att tillåta spelaren att flytta sin pjäs
 document.addEventListener("keydown", function (event) {
@@ -86,5 +77,7 @@ document.addEventListener("keydown", function (event) {
 
 // socket on event för userMv
 socket.on('userMv', function (p) {
-    updateRats(p);
+  players = p;
 });
+
+requestAnimationFrame(update);

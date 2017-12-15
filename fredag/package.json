@@ -1,0 +1,11 @@
+
+{
+  "name": "v40",
+  "version": "1.2.3",
+  "description": "A packaged foo fooer for fooing foos",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.16.2",
+    "socket.io": "^2.0.4"
+  }
+}
