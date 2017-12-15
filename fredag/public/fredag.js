@@ -47,7 +47,7 @@ function update() {
 // för att uppdatera alla spelare
 
 // bind keydown för att tillåta spelaren att flytta sin pjäs
-document.addEventListener("keydown", function (event) {
+document.addEventListener('keydown', function (event) {
     if (event.defaultPrevented) {
         return;
     }

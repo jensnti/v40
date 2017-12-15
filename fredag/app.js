@@ -19,6 +19,7 @@ app.get('/cam', function (req, res) {
   res.sendFile(__dirname + '/public/cam.html');
 });
 
+// gamestuff horrible code
 var players = [];
 
 function updateRats(pUpd) {
@@ -37,13 +38,11 @@ function updateRats(pUpd) {
 // som körs när det händer
 // dessa events använder vi för att skapa vår chatclient
 io.on('connection', function (socket) {
-    console.log('a user connected' + socket.request.connection.remoteAddress);
-
-
+    console.log("a user connected" + socket.request.connection.remoteAddress);
 
     io.emit('userMsg', 'User connected');
     socket.on('disconnect', function () {
-        console.log('user disconnected' + socket.request.connection.remoteAddress);
+        console.log("user disconnected" + socket.request.connection.remoteAddress);
         io.emit('userMsg', 'User disconnected');
     });
 
@@ -55,10 +54,9 @@ io.on('connection', function (socket) {
     socket.on('userMv', function (cords) {
         updateRats(cords);
         io.emit('userMv', players);
-        console.log(players);
     });
 });
 
 http.listen(3000, function () {
-  console.log('listening on *:3000');
+  console.log("listening on *:3000");
 });
