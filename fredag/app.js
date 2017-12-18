@@ -19,7 +19,7 @@ app.get('/cam', function (req, res) {
   res.sendFile(__dirname + '/public/cam.html');
 });
 
-// gamestuff horrible code
+// funkar, men borde inte vara här, orka
 var players = [];
 
 function updateRats(pUpd) {

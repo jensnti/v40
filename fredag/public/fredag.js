@@ -4,16 +4,16 @@ var socket = io();
 // skapar ett spelarobjekt
 var player  = {
     id: Math.floor(Math.random() * 1000),
-    color: "#" + (Math.random() * 0xFFFFFF << 0).toString(16),
+   //color: "#" + (Math.random() * 0xFFFFFF << 0).toString(16),
+   color: Math.floor(Math.random()*256) + ", " + Math.floor(Math.random()*256) + ", " + Math.floor(Math.random()*256),
     x: Math.floor(Math.random() * 100),
     y: Math.floor(Math.random() * 100),
+    direction: "",
     size: 10
 };
 
 // för att hålla reda på alla spelare
 var players = [];
-
-// TODO: man ser bara spelare som connectar efter sig själv
 
 // när vi connectar skickar vi vår player
 socket.emit('pConnect', player);
@@ -31,10 +31,17 @@ socket.on('userMsg', function (msg) {
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 
+// context.fillText('\uF047',20,50); \f111  \f1bb \f2dc
+//ctx.fillStyle = "#ff0000";
+//ctx.fillText('\uf111', 50, 50);
+
 // drawRat, tar x y och color för en spelare och ritar upp
 function drawRat(x, y, c, s) {
-    ctx.fillStyle = c;
-    ctx.fillRect(x, y, s, s);
+    ctx.clearRect(0, 0, canvas.height, canvas.width);
+    ctx.font= s + "px FontAwesome";
+    ctx.fillStyle = "rgb(" + c + ")";
+//    ctx.fillRect(x, y, s, s);
+    ctx.fillText("\uf2dc", x, y);
 }
 
 function update() {
@@ -53,19 +60,23 @@ document.addEventListener('keydown', function (event) {
     }
     switch (event.key) {
     case "w":
-        player.y -= 10;
+        //player.y -= player.size;
+        player.direction = "w";
         socket.emit('userMv', player);
         break;
     case "a":
-        player.x -= 10;
+        //player.x -= player.size;
+        player.direction = "a";
         socket.emit('userMv', player);
         break;
     case "s":
-        player.y += 10;
+        //player.y += player.size;
+        player.direction = "s";
         socket.emit('userMv', player);
         break;
     case "d":
-        player.x += 10;
+        //player.x += player.size;
+        player.direction = "wd";
         socket.emit('userMv', player);
         break;
     default:
